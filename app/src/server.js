@@ -1,5 +1,4 @@
 /*
-http://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t=Server
 
 ███████ ███████ ██████  ██    ██ ███████ ██████  
 ██      ██      ██   ██ ██    ██ ██      ██   ██ 
@@ -31,14 +30,11 @@ dependencies: {
 */
 
 /**
- * IntelliClass - Server component
+ * SamKonnect - Server component
  *
  * @link    GitHub: https://github.com/annukumarchaudhary/Sam-Konnect.git
- * @link    Official Live demo: https://p2p.mirotalk.com
- * @license For open source use: AGPLv3
  * @license For commercial use or closed source, contact us at license.mirotalk@gmail.com or purchase directly from CodeCanyon
- * @license CodeCanyon: https://codecanyon.net/item/mirotalk-p2p-webrtc-realtime-video-conferences/38376661
- * @author  Miroslav Pejic - miroslav.pejic.85@gmail.com
+ * @author  Annu Kumar Chaudhary - akchaudhary1120@gmail.com
  * @version 1.3.23
  *
  */

@@ -1,7 +1,7 @@
 swagger: '2.0'
 
 info:
-    title: IntelliClass P2P API
+    title: Sam-Konnect API
     description: API description for external applications that integrates with IntelliClass.
     version: 1.0.1
 

@@ -1,9 +1,9 @@
 <?php
 
-$API_KEY_SECRET = "mirotalkp2p_default_secret";
-$MIROTALK_URL = "https://p2p.mirotalk.com/api/v1/join";
-// $MIROTALK_URL = "http://localhost:3000/api/v1/join";
-// $MIROTALK_URL = "https://mirotalk.up.railway.app/api/v1/join";
+$API_KEY_SECRET = "sam_konnect_default_secret";
+$SAM_KONNECT_URL = "https://p2p.mirotalk.com/api/v1/join";
+// $SAM_KONNECT_URL = "http://localhost:3000/api/v1/join";
+// $SAM_KONNECT_URL = "https://mirotalk.up.railway.app/api/v1/join";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $MIROTALK_URL);
