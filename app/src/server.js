@@ -33,7 +33,7 @@ dependencies: {
 /**
  * IntelliClass - Server component
  *
- * @link    GitHub: https://github.com/miroslavpejic85/mirotalk
+ * @link    GitHub: https://github.com/annukumarchaudhary/Sam-Konnect.git
  * @link    Official Live demo: https://p2p.mirotalk.com
  * @license For open source use: AGPLv3
  * @license For commercial use or closed source, contact us at license.mirotalk@gmail.com or purchase directly from CodeCanyon
