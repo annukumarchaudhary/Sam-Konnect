@@ -1,65 +1,64 @@
-<h1 align="center">SamKonnect</h1>
+# 🎓 Sam-Konnect: Real-Time WebRTC P2P Video Conferencing
 
-<br />
+Welcome to **Sam-Konnect**, an advanced, free, and secure browser-based peer-to-peer (P2P) video and audio calling application. 
 
-<p align="center">Free WebRTC - P2P - Simple, Secure, Fast Real-Time Video Conferences with support for up to 4k resolution and 60fps. It's compatible with all major browsers and platforms.</p>
+**Developed By:** Annu Kumar Chaudhary , Ankur Dwivedi 
+**Institution:** Ewing Christian College, Prayagraj (Major Project)
 
-<hr />
+---
 
-Sam Konnect is an advanced real-time communication platform that enables high-quality video and audio conferencing directly in the browser. Built using WebRTC and Node.js, it establishes direct peer-to-peer connections for low-latency and secure communication.
+## 🚀 Overview
+Sam-Konnect utilizes the power of **WebRTC** and **Socket.io** to establish direct peer-to-peer connections between users. Unlike traditional video conferencing apps that route your video through a central server, Sam-Konnect sends your media directly to the other participants. This results in ultra-low latency, crystal-clear quality, and maximum privacy.
 
-Key Features:
+## ✨ Key Features
+* 🔒 **Maximum Privacy:** End-to-end P2P connection means no central server records your video.
+* ⚡ **No Installation Required:** 100% browser-based. Just share a link and start talking.
+* 📝 **Interactive Whiteboard:** Collaborate with your team in real-time.
+* 🗣️ **Live Captions (Speech-to-Text):** Built-in speech recognition for accessibility.
+* 📁 **Direct File Sharing:** Share files directly through WebRTC Data Channels instantly.
+* 🎙️ **Active Speaker Detection:** Automatically highlights the person who is speaking.
+* 🛡️ **Room Protection:** Secure your meetings with a username and password.
 
+---
 
-Secure Meetings: The app supports room protection, where it requires a valid username and password for joining the room.
+## 📊 Feature Comparison: Sam-Konnect vs. Zoom vs. Google Meet
 
+| Feature / App | 🎓 Sam-Konnect | 🔵 Zoom | 🟢 Google Meet |
+| :--- | :--- | :--- | :--- |
+| **Technology Architecture** | **WebRTC P2P** (Direct) | Client-Server (SFU) | Client-Server (SFU) |
+| **Meeting Time Limit** | **Unlimited** (Always Free) | 40 Minutes (Free tier) | 60 Minutes (Free tier) |
+| **Privacy & Security** | **Highest** (No server routing) | High | High |
+| **Screen Sharing** | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Live Captions** | ✅ Yes (Web Speech API) | ✅ Yes | ✅ Yes |
+| **Interactive Whiteboard**| ✅ Yes (Built-in) | ✅ Yes | ✅ Yes (Jamboard/Miro) |
+| **Direct File Sharing** | ✅ Yes (Direct P2P, fast) | ✅ Yes (Via Cloud) | ❌ No (Drive needed) |
+| **Cost** | **100% Free** | Paid for Premium | Paid for Premium |
 
-Role Management: In our virtual room, the first participant to join will assume the role of the presenter.
+### 🏆 Why Choose Sam-Konnect? (Key Advantages)
+1. **True Peer-to-Peer (P2P) Privacy:** In traditional apps, your video goes to a server first. In Sam-Konnect, WebRTC sends video directly from your laptop to the other user's laptop. No central server can record or access the media stream.
+2. **No Setup, No Limits:** No app installation required, and no 40-minute kick-outs. Users can communicate for unlimited hours in high quality directly from their browser.
+3. **Data Channel File Sharing:** Bypasses cloud storage completely. WebRTC data channels allow users to send files securely and instantly P2P.
 
+### ⚠️ The Honest Trade-off (Limitation)
+Since Sam-Konnect is a pure P2P network, every user must send their video stream directly to everyone else in the room. 
+* **The Sweet Spot:** Perfect for 2 to 15 participants (lag-free, highly secure, zero latency).
+* **The Limit:** If 50+ people join, the browser will consume significant CPU and bandwidth to maintain 50 individual connections, unlike Zoom which offloads this to their central servers.
 
-IP Whitelisting: For extra security, access to the instance is restricted to only the specified IP addresses in the allowed list.
+---
 
+## 🛠️ Technology Stack
+* **Frontend:** HTML5, CSS3, Vanilla JavaScript (DOM manipulation & WebRTC API).
+* **Backend Signaling:** Node.js, Express.js.
+* **Real-time Engine:** Socket.io (for STUN/TURN signaling).
+* **Security:** Crypto-js, JSON Web Tokens (JWT), xss (Cross-site scripting prevention).
 
-API Integration: The app provides an API where the response will give you a entrypoint / Room URL for your meeting.
+---
 
+## 💻 How to Run Locally
 
-Post-Meeting Redirect: Upon leaving the room, users who either opt out of providing feedback or if the survey is disabled will be redirected to a specified URL.
+If you want to run this project on your own machine, follow these steps:
 
-
-Usage Analytics: The system can track aggregated usage statistics in order to improve our service.
-
-<details>
-<summary>Start videoconference</summary>
-
-<br/>
-
-1. `Open` [SamKonnect](https://p2p.mirotalk.com/newcall) or [alternative link](https://mirotalk.up.railway.app/newcall).
-2. `Choose` a room name and click **Join Room**.
-3. `Grant` camera and microphone access.
-4. `Share` the room URL and wait for participants to join the video conference.
-
-</details>
-
-<details open>
-<summary>Quick start</summary>
-
-<br/>
-
--   Before running SamKonnect, ensure you have `Node.js` installed. This project has been tested with Node versions [12.X](https://nodejs.org/en/blog/release/v12.22.1/), [14.X](https://nodejs.org/en/blog/release/v14.17.5/), [16.X](https://nodejs.org/en/blog/release/v16.15.1/) and [18.x](https://nodejs.org/en/download).
-
-```bash
-# clone this repo
-$ git clone https://github.com/miroslavpejic85/mirotalk.git
-# go to mirotalk dir
-$ cd SamKonnect
-# copy .env.template to .env (edit it according to your needs)
-$ cp .env.template .env
-# install dependencies
-$ npm install
-# start the server
-$ npm start
-```
-
--   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-</details>
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/annukumarchaudhary/Sam-Konnect.git](https://github.com/annukumarchaudhary/Sam-Konnect.git)
+   cd Sam-Konnect

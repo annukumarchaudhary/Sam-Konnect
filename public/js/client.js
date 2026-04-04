@@ -10307,3 +10307,147 @@ function sanitizeXSS(src) {
 function disable(elem, disabled) {
     elem.disabled = disabled;
 }
+
+// ==========================================
+// Finger Drawing & Math Solver Logic
+// ==========================================
+
+const drawingContainer = document.getElementById('drawing-container');
+const canvas = document.getElementById('drawing-canvas');
+const ctx = canvas ? canvas.getContext('2d') : null;
+let isDrawing = false;
+let isDrawModeActive = false;
+
+// Handle the button to open drawing mode
+const fingerDrawBtn = document.getElementById('fingerDrawBtn');
+if(fingerDrawBtn) {
+    fingerDrawBtn.addEventListener('click', () => {
+        isDrawModeActive = !isDrawModeActive;
+        toggleDrawingMode(isDrawModeActive);
+    });
+}
+
+function toggleDrawingMode(enable) {
+    if(!drawingContainer) return;
+    if (enable) {
+        drawingContainer.style.display = 'block';
+        resizeCanvas();
+        setupDrawingListeners();
+    } else {
+        drawingContainer.style.display = 'none';
+        document.getElementById('recognition-output').style.display = 'none';
+        removeDrawingListeners();
+    }
+}
+
+document.getElementById('exit-draw').addEventListener('click', () => {
+    isDrawModeActive = false;
+    toggleDrawingMode(false);
+});
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.lineWidth = 6;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = 'white'; // Draw color
+}
+
+function setupDrawingListeners() {
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+
+    canvas.addEventListener('touchstart', (e) => startDrawing(e.touches[0]));
+    canvas.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // Stop scrolling on mobile
+        draw(e.touches[0]);
+    });
+    canvas.addEventListener('touchend', stopDrawing);
+}
+
+function removeDrawingListeners() {
+    canvas.removeEventListener('mousedown', startDrawing);
+    canvas.removeEventListener('mousemove', draw);
+    canvas.removeEventListener('mouseup', stopDrawing);
+    canvas.removeEventListener('mouseout', stopDrawing);
+}
+
+function startDrawing(e) {
+    isDrawing = true;
+    draw(e);
+}
+
+function stopDrawing() {
+    isDrawing = false;
+    ctx.beginPath();
+}
+
+function draw(e) {
+    if (!isDrawing) return;
+    ctx.lineTo(e.clientX, e.clientY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX, e.clientY);
+}
+
+document.getElementById('clear-draw').addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById('recognition-output').style.display = 'none';
+});
+
+document.getElementById('solve-math').addEventListener('click', solveHandwrittenMath);
+
+async function solveHandwrittenMath() {
+    const outputDiv = document.getElementById('recognition-output');
+    const recognizedTextSpan = document.getElementById('recognized-text');
+    const mathResultSpan = document.getElementById('math-result');
+
+    outputDiv.style.display = 'block';
+    recognizedTextSpan.innerText = "Processing...";
+    mathResultSpan.innerText = "...";
+
+    // Tesseract ke liye image ko black on white karna padta hai
+    const ocrCanvas = document.createElement('canvas');
+    ocrCanvas.width = canvas.width;
+    ocrCanvas.height = canvas.height;
+    const ocrCtx = ocrCanvas.getContext('2d');
+    
+    ocrCtx.fillStyle = "white";
+    ocrCtx.fillRect(0, 0, ocrCanvas.width, ocrCanvas.height);
+    ocrCtx.filter = 'invert(1)'; // White strokes ko black banayega
+    ocrCtx.drawImage(canvas, 0, 0);
+
+    const imageData = ocrCanvas.toDataURL('image/png');
+
+    try {
+        const result = await Tesseract.recognize(imageData, 'eng');
+        const text = result.data.text.trim();
+        recognizedTextSpan.innerText = text;
+
+        if (text && text.includes('=')) {
+            const expression = text.split('=')[0].replace(/[a-zA-Z]/g, '').trim(); 
+            try {
+                const solved = math.evaluate(expression);
+                mathResultSpan.innerText = solved;
+            } catch(e) {
+                mathResultSpan.innerText = "Calculation failed";
+            }
+        } else if (text) {
+             try {
+                const expression = text.replace(/[a-zA-Z]/g, '').trim();
+                const solved = math.evaluate(expression);
+                mathResultSpan.innerText = solved;
+             } catch(e) {
+                mathResultSpan.innerText = "This is not a math question";
+             }
+        } else {
+            mathResultSpan.innerText = "No text recognized";
+        }
+    } catch (error) {
+        console.error("Recognition Error:", error);
+        recognizedTextSpan.innerText = "Error";
+    }
+}
+

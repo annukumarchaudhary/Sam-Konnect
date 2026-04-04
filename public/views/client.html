@@ -64,6 +64,9 @@
         <!-- JavaScripts -->
 
         <script async src="../js/umami.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.1/math.js"></script>
+        
     </head>
 
     <body onload="initClientPeer()">
@@ -118,6 +121,7 @@ access to use this app.
             <button id="roomEmojiPickerBtn"></button>
             <button id="videoBtn" class="fas fa-video"></button>
             <button id="fileShareBtn"></button>
+            <button id="fingerDrawBtn" class="fas fa-pencil-alt"></button>
             <button id="audioBtn" class="fas fa-microphone"></button>
             <button id="documentPiPBtn"></button>
             <button id="screenShareBtn" class="fas fa-desktop"></button>
@@ -1006,5 +1010,18 @@ access to use this app.
         <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
         <!-- End Google Translate -->
+         <div id="drawing-container" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 100;">
+            <canvas id="drawing-canvas"></canvas>
+            <div class="drawing-controls" style="position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 101;">
+                <button id="clear-draw" class="btn-draw">clear canvas</button>
+                <button id="solve-math" class="btn-draw">Solve</button>
+                <button id="exit-draw" class="btn-draw">Close</button>
+            </div>
+        </div>
+
+        <div id="recognition-output" style="display: none; position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.8); color: white; padding: 15px; border-radius: 10px; z-index: 102; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            <p style="margin-bottom: 5px;">Identified text: <span id="recognized-text" style="font-weight:bold; color: #3498db;"></span></p>
+            <p>Result: <span id="math-result" style="font-weight:bold; color: #2ecc71;"></span></p>
+        </div>
     </body>
 </html>
