@@ -5,7 +5,7 @@ async function getToken() {
         // Use dynamic import with await
         const { default: fetch } = await import('node-fetch');
 
-        const API_KEY_SECRET = 'mirotalkp2p_default_secret';
+        const API_KEY_SECRET = 'sam_konnect_secret_2026';
         const MIROTALK_URL = 'https://p2p.mirotalk.com/api/v1/token';
         //const MIROTALK_URL = 'http://localhost:3000/api/v1/token';
 

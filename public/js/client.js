@@ -707,7 +707,7 @@ let isPeerAuthEnabled = false; // Username and Password required in the URL para
 
 // survey
 let surveyActive = true; // when leaving the room give a feedback, if false will be redirected to newcall page
-let surveyURL = 'https://www.questionpro.com/t/AUs7VZq00L';
+let surveyURL = 'https://forms.gle/5EF313ZB8y8fU6GB8';
 
 // Redirect on leave room
 let redirectActive = false;

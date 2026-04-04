@@ -5,7 +5,7 @@
 To initiate a meeting, send an HTTP request to Sam Konnect’s server with your API key. Replace the default secret key in `.env` with your own.
 
 ```bash
-API_KEY_SECRET=mirotalkp2p_default_secret
+API_KEY_SECRET=sam_konnect_secret_2026
 ```
 
 Use the following examples to make API calls:

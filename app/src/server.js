@@ -175,7 +175,7 @@ const swaggerDocument = yamlJS.load(path.join(__dirname + '/../api/swagger.yaml'
 const { v4: uuidV4 } = require('uuid');
 const apiBasePath = '/api/v1'; // api endpoint path
 const api_docs = host + apiBasePath + '/docs'; // api docs
-const api_key_secret = process.env.API_KEY_SECRET || 'mirotalkp2p_default_secret';
+const api_key_secret = process.env.API_KEY_SECRET || 'sam_konnect_secret_2026'; // api key secret for authorization, must be the same as in client.js apiKeySecret
 const apiDisabledString = process.env.API_DISABLED || '["token", "meetings"]';
 const api_disabled = JSON.parse(apiDisabledString);
 
@@ -209,7 +209,7 @@ const IPLookupEnabled = getEnvBoolean(process.env.IP_LOOKUP_ENABLED);
 
 // Survey URL
 const surveyEnabled = getEnvBoolean(process.env.SURVEY_ENABLED);
-const surveyURL = process.env.SURVEY_URL || 'https://www.questionpro.com/t/AUs7VZq00L';
+const surveyURL = process.env.SURVEY_URL || 'https://forms.gle/5EF313ZB8y8fU6GB8';
 
 // Redirect URL
 const redirectEnabled = getEnvBoolean(process.env.REDIRECT_ENABLED);
