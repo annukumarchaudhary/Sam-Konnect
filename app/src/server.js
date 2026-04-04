@@ -158,12 +158,12 @@ const hostCfg = {
 
 // JWT config
 const jwtCfg = {
-    JWT_KEY: process.env.JWT_KEY || 'mirotalk_jwt_secret',
+    JWT_KEY: process.env.JWT_KEY || 'sam_konnect_jwt_2026',
     JWT_EXP: process.env.JWT_EXP || '1h',
 };
 
 // Room presenters
-const roomPresentersString = process.env.PRESENTERS || '["IntelliClass"]';
+const roomPresentersString = process.env.PRESENTERS || '["Sam Konnect"]';
 const roomPresenters = JSON.parse(roomPresentersString);
 
 // Swagger config

@@ -2,7 +2,7 @@ swagger: '2.0'
 
 info:
     title: Sam-Konnect API
-    description: API description for external applications that integrates with IntelliClass.
+    description: API description for external applications that integrates with Sam Konnect.
     version: 1.0.1
 
 basePath: /api/v1
